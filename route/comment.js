@@ -16,7 +16,7 @@ const add = {
     method: 'post',
     func: (request, response) => {
         console.log('comment add')
-        // 浏览器发过来的数据我们一般称之为 form（表单）
+
         let form = request.body
         // 插入新数据并返回
         let b = comment.new(form)

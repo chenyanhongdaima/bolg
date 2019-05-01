@@ -14,18 +14,11 @@ const add = {
     path: '/api/blog/add',
     method: 'post',
     func: (request, response) => {
-        // 浏览器发过来的数据我们一般称之为 form（表单）
         let form = request.body
-        // 插入新数据并返回
-        // 验证密码
         let r
-        // 通过 mima 这个字段来控制是否新增 blog
-        // if (form.mima === '') {
+
             let b = blog.new(form)
             r = JSON.stringify(b)
-        // } else {
-        //     r = JSON.stringify({})
-        // }
         response.send(r)
     }
 }
