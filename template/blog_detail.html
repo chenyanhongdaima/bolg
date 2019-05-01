@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="scrollbar">
+<head>
+    <title>我的博客</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body style="display: block;" data-id="{{id}}">
+<header class="fixbackground"
+        style="background-image: url(https://annie-header-bg-1253939655.cos.ap-beijing.myqcloud.com/63.jpg);">
+    <div class="mask">
+        <div class="h-header">
+            <div id="logo-S">
+                <a href="https://sariay.github.io/" style="color: rgb(255, 255, 255);">
+                    <img src="/images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <!-- Navigation in header(id="navigation-S") -->
+            <div id="navigation-S">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div class="h-body">
+            <div id="page-motto">
+                <p class="motto">有時候生活會送你一張幸運彩票，能拿到它當然很棒，但也就是如此了。<br> - <br>大衛·米切爾</p>
+            </div>
+            <div id="navigation-H" style="top: -60px; display: none;">
+                <p style="display: none;">
+                    主頁
+                </p>
+                <div id="progress-bar" style="width: 6.8%; display: block;"></div>
+                <div id="progress-percentage">
+                    <h1>6.8%</h1>
+                </div>
+            </div>
+        </div>
+        <div class="h-footer">
+            <ul>
+                <li>
+                    <a><i class="fa fa-camera-retro"></i>新的文章</a>
+                </li>
+                <li>
+                    <a href="http://localhost:5000/allBlog" id="read-more"><i class="fa fa-angle-double-down"></i>博客列表</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Sariay/hexo-theme-Annie" target="_blank"><i class="fa fa-download"></i>去看看我</a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-cell">
+        </div>
+        <div class="header-date">
+            <a href="https://time.is/Beijing" id="time_is_link" rel="nofollow"></a>
+        </div>
+    </div>
+</header>
+<a class="nav-trigger" style="display: none;">
+    <span></span>
+</a>
+<nav class="nav-container" id="cd-nav">
+    <div class="nav-header">
+        <h3>Navigation</h3>
+        <a href="javascript:;" class="nav-close"></a>
+    </div>
+    <div class="nav-body">
+        <ul>
+            <li class="menu-home">
+                <a href="https://sariay.github.io/" class="menu-item-home">主頁</a>
+            </li>
+
+            <li class="menu-archive">
+                <a href="https://sariay.github.io/archives" class="menu-item-archive">歸檔</a>
+            </li>
+
+            <li class="menu-categories">
+                <a href="https://sariay.github.io/categories" class="menu-item-categories">分類</a>
+            </li>
+
+            <li class="menu-tags">
+                <a href="https://sariay.github.io/tags" class="menu-item-tags">标簽</a>
+            </li>
+
+            <li class="menu-about">
+                <a href="https://sariay.github.io/about" class="menu-item-about">關于</a>
+            </li>
+
+            <li class="menu-gallery">
+                <a href="https://sariay.github.io/gallery" class="menu-item-gallery">相冊</a>
+            </li>
+            <li class="menu-search">
+                <a href="javascript:;" class="popup-trigger" title="Search">搜索</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-footer">
+        <ul>
+            <li>
+                <a href="http://github.com/" title="Github" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://github.com/" title="Weibo" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:http://github.com/" title="Email" target="_blank">
+                    <i class="fa fa-envelope-o"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://github.com/" title="QQ" target="_blank">
+                    <i class="fa fa-qq"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://github.com/" title="Twitter" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <div class="gua-blogs"></div>
+</main>
+<footer>
+    <div class="social">
+        <ul>
+            <li>
+                <a href="http://github.com/" title="Weibo" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:http://github.com/" title="Email" target="_blank">
+                    <i class="fa fa-envelope-o"></i>
+                </a>
+            </li>
+            <li>
+                <a href="http://github.com/" title="QQ" target="_blank">
+                    <i class="fa fa-qq"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <p>
+            content by shishihou.
+        </p>
+    </div>
+</footer>
+<script>
+    const ajax = function(request) {
+        let r = new XMLHttpRequest()
+        r.open(request.method, request.url, true)
+        if (request.contentType !== undefined) {
+            r.setRequestHeader('Content-Type', request.contentType)
+        }
+        r.onreadystatechange = function() {
+            if (r.readyState === 4) {
+                request.callback(r.response)
+            }
+        }
+        if (request.method === 'GET') {
+            r.send()
+        } else {
+            r.send(request.data)
+        }
+    }
+    const templateBlog = (blog) => {
+        let title = blog.title
+        let author = blog.author
+        let content = blog.content
+
+        let created_time = new Date(blog.created_time * 1000).toLocaleString()
+        let id = blog.id
+
+        let t = ` 			<div class="layout-post">
+				<div class="article-title">
+					${title}
+				</div>
+			<div class="article-meta">
+	<span>
+	作者
+	<a href="#" itemprop="url">
+		<time datetime="2019-02-26T13:40:34.000Z" itemprop="datePublished">
+	  		${author}
+	  </time>
+	</a>
+	/
+	时间
+	<a href="#" itemprop="url">
+		<time  itemprop="dateUpdated">
+	  		${created_time}
+	  </time>
+	</a>
+		</span>
+	</div>
+			<div class="article-content" id="article-content">
+${content}
+	</div>
+	<div class="blog-comments">
+</div>
+			`
+        return t
+    }
+    const insertBlogAll = function(blog) {
+        let html = ''
+
+        let t = templateBlog(blog)
+        html += t
+
+        // 把数据写入 .gua-blogs 中，直接用覆盖式写入
+        let div = document.querySelector('.gua-blogs')
+        div.innerHTML = html
+    }
+
+    const templateComment = function(comment) {
+        let author = comment.author
+        let content = comment.content
+        let id = comment.id
+        let t = `
+        <div class="new-comment">
+
+
+        <span class="comment-content" value="">${content}</span>
+    </div>
+`
+        return t
+    }
+
+    const insertCommentAll = function(comments) {
+        let html = ''
+        for (let i = 0; i < comments.length; i++) {
+            let b = comments[i]
+            let t = templateComment(b)
+            html += t
+        }
+        // 把数据写入 .gua-blogs 中，直接用覆盖式写入
+        let div = document.querySelector('.blog-comments')
+        div.innerHTML = html
+    }
+
+    const blogOne = (id) => {
+        let request = {
+            method: 'GET',
+            url: '/api/blog/' + id,
+            contentType: 'application/json',
+            callback: function(response) {
+                // console.log('响应', response)
+                let blog = JSON.parse(response)
+                insertBlogAll(blog)
+                console.log("评论",blog.comments)
+                insertCommentAll(blog.comments)
+            }
+        }
+        ajax(request)
+    }
+
+    const __main = () => {
+        let blogId = document.body.dataset.id
+        blogOne(blogId)
+
+    }
+
+    __main()
+</script>
+
+</body>
+</html>
